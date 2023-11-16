@@ -25,16 +25,9 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
    # TODO: implement the function
-    X_train, y_train, encoder, lb = process_data(
-        train_data,
-        categorical_features=categorical_features,
-        label="salary",
-        training=True
-    )
-    pass
-
-    #Defines the model
     model = LogisticRegression()
+    model.fit(X_train, y_train)
+    return model
     
 
 def compute_model_metrics(y, preds):
@@ -74,7 +67,8 @@ def inference(model, X):
         Predictions from the model.
     """
     # TODO: implement the function
-    return model.predict(X)
+    preds = model.predict(X)
+    return preds
     pass
 
 def save_model(model, path):
@@ -87,14 +81,16 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    with open(path, 'wb') as file:
-        pickle.dump(model, file)
+    # TODO: implement the function
+    with open(path, 'wb') as f:
+        pickle.dump(model, f)
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
-    with open(path, 'rb') as file:
-        loaded_model = pickle.load(file)
-    return loaded_model
+    # TODO: implement the function
+    with open(path, 'rb') as f:
+        model = pickle.load(f)
+    return model
 
 
 def performance_on_categorical_slice(
@@ -135,9 +131,11 @@ def performance_on_categorical_slice(
     """
     # TODO: implement the function
     X_slice, y_slice, _, _ = process_data(
-        data[column_name] == slice_value, categorical_features, label, encoder, lb, training=False
+        data,
+        categorical_features=categorical_features,
+        label=label,
+        training=False
     )
-    
     preds = model.predict(X_slice)
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
