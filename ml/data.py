@@ -51,7 +51,8 @@ def process_data(
         y = np.array([])
 
     X_categorical = X[categorical_features].values
-    X_continuous = X.drop(*[categorical_features], axis=1)
+    #X_continuous = X.drop(*[categorical_features], axis=1)
+    X_continuous = X.drop(columns=categorical_features, axis=1)
 
     if training is True:
         encoder = OneHotEncoder(sparse=False, handle_unknown="ignore")
@@ -63,11 +64,12 @@ def process_data(
         try:
             y = lb.transform(y.values).ravel()
         # Catch the case where y is None because we're doing inference.
-        except AttributeError:
+        except (AttributeError, TypeError):
             pass
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
 
 def apply_label(inference):
     """ Convert the binary label in a single inference sample into string output."""
@@ -75,3 +77,9 @@ def apply_label(inference):
         return ">50K"
     elif inference[0] == 0:
         return "<=50K"
+
+'''
+def apply_labels(inferences):
+    """ Convert the binary labels in an array of inference samples into string outputs."""
+    return [">50K" if inference == 1 else "<=50K" for inference in inferences]
+'''
