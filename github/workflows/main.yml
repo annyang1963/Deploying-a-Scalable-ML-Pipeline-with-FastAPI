@@ -28,4 +28,4 @@ jobs:
         run: pytest
 
       - name: Run flake8
-        run: flake8 path/home/emac1995/devops_course/task2/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/test_ml.py path//home/emac1995/devops_course/task2/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/train_model.py path/home/emac1995/devops_course/task2/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/ml/model.py
+        run: flake8 test_ml.py train_model.py /ml/model.py
