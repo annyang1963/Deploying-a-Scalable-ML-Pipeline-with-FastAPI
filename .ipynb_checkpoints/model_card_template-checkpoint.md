@@ -23,15 +23,12 @@ Data Preprocessing: The evaluation data was preprocessed using the same process 
 
 
 ## Metrics
-_Please include the metrics used and your model's performance on those metrics._
+The model's performance was evaluated using the Precision, Recall, and F-1 score as metrics.
+These metrics were chosen because they provide comprehensive insights into a machine learning pipeline's performance. Precision measures the accuracy of positive predictions, F1 Score balances precision and recall, and Recall assesses the model's ability to capture actual positive instances. Precision is crucial when minimizing false positives is a priority, while Recall is essential for avoiding false negatives. The F1 Score offers a balanced evaluation when both precision and recall need consideration, allowing for a more comprehensive assessment of the model's effectiveness.  The models performance on these metrics is as follows:
 
-The model's performance was evaluated using the following metrics on the evaluation data:
-
-Precision: 0.8041
-Recall: 0.5487
-F1-Score: 0.6515
-These metrics were chosen to assess the model's ability to correctly classify individuals with income greater than $50,000 per year (precision) and its ability to capture a substantial portion of such individuals (recall).
-
+Precision: 0.7164
+Recall: 0.2458
+F1-Score: 0.3661
 
 ## Ethical Considerations
 Fairness/bias: The model may exhibit bias if the training data contains biases in its attributes. Care should be taken to assess and mitigate any bias in model predictions.
