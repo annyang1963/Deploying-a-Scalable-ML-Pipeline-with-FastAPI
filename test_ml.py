@@ -1,38 +1,36 @@
-import pytest
+#import pytest
+
 # TODO: add necessary import
 import numpy as np
 import pandas as pd
 from ml.data import process_data
 from ml.model import (
     compute_model_metrics,
-    inference,
-    load_model,
-    performance_on_categorical_slice,
-    save_model,
     train_model,
 )
-from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 
 
 # TODO: implement the first test. Change the function name and input as needed
 def test_one():
     """
-    Test if the train_model function returns a model of the expected type. (UDACITY SUGGESTED TEST #1)
+    Test if the train_model function returns a model of the expected type.
+    (UDACITY SUGGESTED TEST #1)
     """
     # Create acontrolled dataset for testing
-    data = pd.DataFrame({
-        'feature1': [1, 2, 3, 4, 5],
-        'feature2': [0, 1, 0, 1, 0],
-        'label': [0, 1, 0, 1, 0]
-    })
+    data = pd.DataFrame(
+        {
+            "feature1": [1, 2, 3, 4, 5],
+            "feature2": [0, 1, 0, 1, 0],
+            "label": [0, 1, 0, 1, 0],
+        }
+    )
 
     # Process data
     X_train, y_train, _, _ = process_data(
         data,
-        categorical_features=['feature2'],
-        label='label',
+        categorical_features=["feature2"],
+        label="label",
         training=True,
     )
 
@@ -40,7 +38,7 @@ def test_one():
     model = train_model(X_train, y_train)
 
     # Check if model returned by train_model is of the expected type
-    expected_model_type = LogisticRegression 
+    expected_model_type = LogisticRegression
 
     assert isinstance(model, expected_model_type)
 
@@ -51,17 +49,19 @@ def test_two():
     Test the machine learning model's algorithm.  (UDACITY SUGGESTED TEST #2)
     """
     # Create controlled dataset for testing
-    data = pd.DataFrame({
-        'feature1': [1, 2, 3, 4, 5],
-        'feature2': [0, 1, 0, 1, 0],
-        'label': [0, 1, 0, 1, 0]
-    })
+    data = pd.DataFrame(
+        {
+            "feature1": [1, 2, 3, 4, 5],
+            "feature2": [0, 1, 0, 1, 0],
+            "label": [0, 1, 0, 1, 0],
+        }
+    )
 
     # Process data
     X_train, y_train, _, _ = process_data(
         data,
-        categorical_features=['feature2'],
-        label='label',
+        categorical_features=["feature2"],
+        label="label",
         training=True,
     )
 
@@ -75,7 +75,8 @@ def test_two():
 # TODO: implement the third test. Change the function name and input as needed
 def test_three():
     """
-    Test if the compute_model_metrics function returns the expected values.  (UDACITY SUGGESTED TEST #3)
+    Test if the compute_model_metrics function returns the expected values.
+    (UDACITY SUGGESTED TEST #3)
     """
     # Define a test set with controlled values
     y_true = np.array([0, 1, 0, 1, 0])
@@ -85,9 +86,9 @@ def test_three():
     precision, recall, fbeta = compute_model_metrics(y_true, y_pred)
 
     # Check if the computed metrics match the expected values
-    expected_precision = 0.6667  
-    expected_recall = 1.0       
-    expected_fbeta = 0.8        
+    expected_precision = 0.6667
+    expected_recall = 1.0
+    expected_fbeta = 0.8
 
     assert round(precision, 4) == expected_precision
     assert round(recall, 4) == expected_recall
