@@ -77,9 +77,3 @@ def apply_label(inference):
         return ">50K"
     elif inference[0] == 0:
         return "<=50K"
-
-'''
-def apply_labels(inferences):
-    """ Convert the binary labels in an array of inference samples into string outputs."""
-    return [">50K" if inference == 1 else "<=50K" for inference in inferences]
-'''
