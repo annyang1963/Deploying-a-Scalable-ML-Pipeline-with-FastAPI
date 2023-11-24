@@ -18,7 +18,7 @@ Data Preprocessing: The training data was preprocessed with one-hot encoding of 
 
 
 ## Evaluation Data
-Evaluation Dataset: Census Income Test Dataset
+Evaluation Dataset: Census Income Test Dataset  - this dataset was split into a test dataset and a training dataset at a ratio of 20:80.  That is, the testing dataset used for evaluation of the model is 20% of the original dataset.
 Data Preprocessing: The evaluation data was preprocessed using the same process as the training data, including one-hot encoding of categorical features and label binarization.
 
 
