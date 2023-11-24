@@ -68,20 +68,7 @@ def inference(model, X):
     """
     # TODO: implement the function
 
-    """
-    #ATTEMPT AT APPLYING LABELS?  I need y_slice to preds to match
-    and only one is binarized
-    # Run model predictions
     preds = model.predict(X)
-
-    # Apply labels to predictions
-    preds_with_labels = [apply_label(pred) for pred in preds]
-
-    return preds_with_labels
-    """
-
-    preds = model.predict(X)
-    # add labels
     return preds
 
 
@@ -104,9 +91,7 @@ def load_model(path):
     """Loads pickle file from `path` and returns it."""
     # TODO: implement the function
     with open(path, "rb") as f:
-        # model = pickle.load(f)
         return pickle.load(f)
-    # return model
 
 
 def performance_on_categorical_slice(
@@ -161,7 +146,7 @@ def performance_on_categorical_slice(
         label=label,
         training=False,
         encoder=encoder,
-        lb=lb,  # Binarize the label for slices
+        lb=lb,
     )
 
     # Predict using the model
